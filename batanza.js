@@ -63,16 +63,27 @@ function playGame(playerMove) {
   localStorage.setItem('headerScore', JSON.stringify(headerScore));
 
     updateHeaderSelector();
-
-  
-
-    updateBankValue();
-  
+    updateBankValue();  
   
   document.getElementById('overlay').style.opacity = 1;
   document.getElementById('overlay').style.pointerEvents = 'all';
   document.querySelector('.js-pop-up').style.display = 'block';
 };
+
+function handleResetButton() {
+  score.wins = 0;
+  score.losses = 0;
+  score.ties = 0;
+  result = ``;
+  bankValue = 0;
+  localStorage.removeItem('score');
+  updateScoreElement();
+  staticScoreUpdate();
+  localStorage.removeItem('headerScore');
+  updateHeaderSelector();
+  localStorage.removeItem('bankValue');
+  updateBankValue();
+}
 
 function updateScoreElement() {
   document.querySelector('.js-score')
