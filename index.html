@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BATANZA V1</title>
+  <link rel="icon" type="image/x-icon" href="icons/gamblerPepe.jpg">
+  <link rel="stylesheet" href="batanza.css">
+
+</head>
+<body>  
+
+
+  <div class="pop-up js-pop-up">
+    <div class="pop-up-header">
+      <div class="pop-up-inside-header js-pop-up-header-inside"></div><button class="close-button close-button-js">&times;</button>
+    </div>
+    <div class="pop-up-body">
+      <p class="js-result js-result-event"></p>
+      <p class="js-score"></p>
+    </div>
+  </div>
+  <div id="overlay" class="js-overlay"></div>
+
+
+
+  <div class="main-Flex-container">
+    <h2 class="header-control">PLAY WITH YOUR MOOD</h2>
+      <button onclick="
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        result = ``;
+        bankValue = 0;
+        localStorage.removeItem('score');
+        updateScoreElement();
+        staticScoreUpdate();
+        localStorage.removeItem('headerScore');
+        updateHeaderSelector();
+        localStorage.removeItem('bankValue');
+        updateBankValue();
+        " class="reset-score-button">RESET</button>
+    <div class="button-cluster">
+      <button 
+        onclick= "playGame('card1')" 
+        class="play-cards1 js-card1 css-card1">
+        <img class="image-control" src="icons/tumblr_ot3rlf7RE91vjrytfo1_250.jpg">
+      </button>
+      <button 
+        onclick= "playGame('card2')" 
+        class="play-cards1 js-card2 css-card2">
+        <img class="image-control" src="icons/tumblr_ot3rs3WB1p1vjrytfo1_250.jpg">
+      </button>
+      <button 
+        onclick= "playGame('card2')" 
+        class="play-cards1 js-card2 css-card3">
+        <img class="image-control" src="icons/tumblr_ot5bxaNl3R1vjrytfo1_250.jpg">
+      </button>
+    </div>
+    <div class="button-cluster2">      
+      <button 
+        onclick= "playGame('card1')" 
+        class="play-cards2 js-card1 css-card6">
+        <img class="image-control" src="icons/tumblr_ov9n5hc3yf1vjrytfo1_250.jpg">
+      </button>
+      <button 
+        onclick= "playGame('card2')" 
+        class="play-cards2 js-card2 css-card9">
+        <img class="image-control" src="icons/tumblr_pmbb860gw11vsss7oo1_250.png">
+      </button>
+      <button 
+        onclick= "playGame('card3')" 
+        class="play-cards2 js-card3 css-card5">
+        <img class="image-control" src="icons/gamblerPepe.jpg">
+      </button>
+    </div>
+    <div class="results-cluster">
+      <p id="bank-control" class="bank-control js-bank-control"></p>
+      <p class="score-control"></p>
+      <div class="loan-div">
+        <div id="loan-value-div-id" class="loan-value-div">
+          <button id="loan-close-button" class="loan-close-button loan-close-button-js">
+            &times;
+          </button>
+          <p onclick="loanAdd5()" id="loan-value5" class="loan-value5">500</p>
+          <p onclick="loanAdd2()" id="loan-value2" class="loan-value2">200</p>
+        </div>
+        <button id="loan-control-id" class="loan-control js-loan-control">
+          GET LOAN
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+  <audio class="coin-sound2">
+    <source src="audio/loanFor2.mp3">
+  </audio>
+  <audio class="coin-sound5">
+    <source src="audio/loanFor5.mp3">
+  </audio>
+
+  <script src="batanza.js"></script>
+  
+</body>
+</html>
