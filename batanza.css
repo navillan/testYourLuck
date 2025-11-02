@@ -206,51 +206,61 @@ body {
 } 
 
 .loan-value-div {
+  position: fixed;
   background-color: rgb(142, 209, 78);
-  color: rgb(255, 255, 255);
   font-weight: bold;
-  height: 12vh;
-  width: 12vh;
-  padding-bottom: 2vh;
-  margin-right: 0vw;
+  width: 130px;
+  height: 90px;
   border-radius: 2px;
   display: none;
   cursor: pointer;
-  position: absolute;
-  bottom: 14.3vh;
+  bottom: 125px;
 }
 
 .loan-value2:hover {
   background-color: green;
+  outline: orangered solid 1px;
 }
 .loan-value2 {
-  margin-top: 0px;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  margin-bottom: 0vh;
+  margin: 0px;
+  height: 39%;
+  text-align: center;
 }
 .loan-value2:active {
   background-color: rgb(142, 209, 78);
 }
 
+.loan-value2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
 .loan-value5:hover {
   background-color: green;
+  outline: orangered solid 1px;
 }
 .loan-value5 {
-  margin-top: 0vh;
+  margin-top: 0;
   margin-bottom: 0;
-  padding-top: 1vh;
-  height: 36%;
+  height: 39%;
 }
 .loan-value5:active {
   background-color: rgb(142, 209, 78);
 }
 
+.loan-value5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
 .loan-close-button {
-  height: 24%;
-  margin-bottom: 0;
-  margin-top: 0;
+  display: block;
   width: 100%;
+  height: 22%;
 }
 
 @media (max-width: 900px) {
@@ -270,6 +280,11 @@ body {
   }
   .bank-control, .score-control, .loan-control {
     font-size: 20px;
+  }
+  .loan-value-div {
+    width: 100px;
+    height: 84px;
+    bottom: 155px;
   }
 }
 
@@ -294,6 +309,11 @@ body {
   .bank-control, .score-control, .loan-control {
     font-size: 16px;
   }
+  .loan-value-div {
+    width: 80px;
+    height: 88px;
+    bottom: 205px;
+  }
 }
 
 @media (max-width: 451px) {
@@ -316,5 +336,10 @@ body {
   }
   .bank-control, .score-control, .loan-control {
     font-size: 12px;
+  }
+  .loan-value-div {
+    width: 60px;
+    height: 90px;
+    bottom: 210px;
   }
 }

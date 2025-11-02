@@ -11,6 +11,7 @@ let result = ``;
 updateScoreElement();
 updateHeaderSelector();
 updateBankValue();
+staticScoreUpdate();
 
 
 function playGame(playerMove) {
