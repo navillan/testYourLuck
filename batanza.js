@@ -112,7 +112,7 @@ function updateBankValue() {
 
 function staticScoreUpdate() {
   document.querySelector('.score-control')
-    .innerHTML = localStorage.getItem("score") ? `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`: "Wins: 0, Losses: 0, Ties: 0";
+    .innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
 };
 
 
