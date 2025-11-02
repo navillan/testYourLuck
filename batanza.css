@@ -15,7 +15,7 @@ body {
 
 .main-Flex-container {
   align-items: center;
-  height: 96vh;
+  height: 94vh;
 }
 
 .header-control {
@@ -51,7 +51,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 2vh;
   box-sizing: border-box;
   margin-top: 4vh;
 }
@@ -62,8 +61,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 2vh;
   box-sizing: border-box;
+  margin-top: 6vh;
 }
 
 .button-cluster, .button-cluster2 {
@@ -72,7 +71,6 @@ body {
 
 .results-cluster {
   width: 100%;
-  min-height: 18%;
   display: flex;
   align-items: center;
   margin-top: 5vh;
@@ -82,24 +80,25 @@ body {
   width: 25%;
   display: inline-block;
   text-align: center;
-  font-size: 3vh;
 }
 
 .score-control {
   display: inline-block;
   width: 50%;
-  font-size: 3vh;
   text-align: center;
 }
 
 .loan-div {
   width: 25%;
   height: 20vh;
-  padding-left: 40px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.bank-control, .score-control, .loan-control {
+  font-size: 24px;
 }
 
 
@@ -146,11 +145,10 @@ body {
 }
 
 .image-control {
-  height: auto;
-  max-height: 18vh;
+  height: 190px;
   max-width: 100%;
-  border-radius: 56px;
-  object-fit: contain;
+  width: auto;
+  border-radius: 90px;
 }
   
 .pop-up {
@@ -255,6 +253,26 @@ body {
   width: 100%;
 }
 
+@media (max-width: 900px) {
+  body {
+    font-size: 24px;
+  }
+  .reset-score-button {
+    font-size: 22px;
+    padding: 15px 17px;
+    border-radius: 19px;
+  }
+  .button-cluster2 {
+    margin-top: 5vh;
+  }
+  .button-cluster, .button-cluster2 {
+    gap: 22px;
+  }
+  .bank-control, .score-control, .loan-control {
+    font-size: 20px;
+  }
+}
+
 @media (max-width: 600px) {
   body {
     font-size: 20px;
@@ -264,7 +282,39 @@ body {
     padding: 14px 16px;
     border-radius: 18px;
   }
+  .button-cluster2 {
+    margin-top: 1vh;
+  }
   .button-cluster, .button-cluster2 {
-    gap: 10px;
+    gap: 18px;
+  }
+  .image-control {
+    height: 120px;
+  }
+  .bank-control, .score-control, .loan-control {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 451px) {
+  body {
+    font-size: 16px;
+  }
+  .reset-score-button {
+    font-size: 14px;
+    padding: 12px 14px;
+    border-radius: 16px;
+  }
+  .button-cluster, .button-cluster2 {
+    gap: 16px;
+  }
+  .image-control {
+    height: 100px;
+  }
+  .loan-control {
+    padding: 10px 12px;
+  }
+  .bank-control, .score-control, .loan-control {
+    font-size: 12px;
   }
 }
