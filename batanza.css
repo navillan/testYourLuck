@@ -24,11 +24,9 @@ body {
   margin-right: auto;
   justify-content: center;
   margin-top: 4vh;
+  pointer-events: none;
 }
 
-.reset-score-button:hover {
-  box-shadow: 0 0 10px 4px rgb(255, 255, 255, 0.8);
-}
 .reset-score-button {
   font-size: 26px;
   padding: 16px 18px;
@@ -39,13 +37,17 @@ body {
   color: rgb(79, 179, 32);
   background: rgb(43,8,111);
   background: linear-gradient(90deg, rgba(43,8,111,1) 0%, rgba(101,27,139,1) 100%);
+  cursor: pointer;
+}
+.reset-score-button:hover {
+  box-shadow: 0 0 10px 4px rgb(255, 255, 255, 0.8);
 }
 .reset-score-button:active {
   box-shadow: 0 0 10px 2px rgb(255, 255, 255, 0.8) inset;
   color: white;
 }
 
-.button-cluster {
+.button-cluster1 {
   width: 100%;
   height: 22%;
   display: flex;
@@ -64,9 +66,28 @@ body {
   box-sizing: border-box;
   margin-top: 6vh;
 }
+.button-cluster1, .button-cluster2 {
+  gap: 50px;
+}
 
-.button-cluster, .button-cluster2 {
-  gap: 30px;
+.image-control {
+  height: 190px;
+  max-width: 100%;
+  width: auto;
+  border-radius: 90px;
+  cursor: pointer;
+  transition: all 0.7s ease;
+  -webkit-user-drag: none;
+}
+.image-control:hover {
+  transition: all 0.7s ease;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px 5px rgb(255, 255, 255, 0.8);
+}
+.image-control:active {
+  transition: all 0.1s ease;
+  transform: scale(0.9);
+  box-shadow: 0 0 20px 11px rgba(15, 10, 10, 0.8);
 }
 
 .results-cluster {
@@ -80,12 +101,18 @@ body {
   width: 25%;
   display: inline-block;
   text-align: center;
+  pointer-events: none;
 }
 
 .score-control {
   display: inline-block;
   width: 50%;
   text-align: center;
+  pointer-events: none;
+}
+
+.bank-control, .score-control, .loan-control {
+  font-size: 24px;
 }
 
 .loan-div {
@@ -96,11 +123,6 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-.bank-control, .score-control, .loan-control {
-  font-size: 24px;
-}
-
 
 .loan-control:hover {
   box-shadow: 0 0 10px 4px rgb(255, 255, 255, 0.8);
@@ -117,93 +139,13 @@ body {
   color: rgb(79, 179, 32);
   background: rgb(43,8,111);
   background: linear-gradient(90deg, rgba(43,8,111,1) 0%, rgba(101,27,139,1) 100%);
+  cursor: pointer;
 }
 
 .loan-control:active {
   box-shadow: 0 0 10px 2px rgb(255, 255, 255, 0.8) inset;
   color: white;
 }
-
-.play-cards1 {
-  background-color: transparent;
-  cursor: pointer;
-  margin-top: 0;
-  border: none;
-  max-height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.play-cards2 {
-  background-color: transparent;
-  cursor: pointer;
-  margin-top: 0;
-  border: none;
-  max-height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.image-control {
-  height: 190px;
-  max-width: 100%;
-  width: auto;
-  border-radius: 90px;
-}
-  
-.pop-up {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid black;
-  border-radius: 10px;
-  z-index: 10;
-  width: 500px;
-  max-width: 80%;
-  display: none;
-}
-
-.pop-up-header {
-  padding: 10px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid black;
-  background-color: #7059c2;
-}
-
-.pop-up-inside-header {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-.close-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: none;
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: white;
-}
-
-.pop-up-body {
-  padding: 10px 15px;
-  background-color: #7059c2;
-}
-
-
-#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, .5);
-  pointer-events: none;
-  opacity: 0;
-} 
 
 .loan-value-div {
   position: fixed;
@@ -214,26 +156,28 @@ body {
   border-radius: 2px;
   display: none;
   cursor: pointer;
-  bottom: 125px;
+  bottom: 126px;
+}
+.loan-close-button {
+  display: block;
+  width: 100%;
+  height: 22%;
+  cursor: pointer;
 }
 
 .loan-value2:hover {
   background-color: green;
   outline: orangered solid 1px;
 }
-.loan-value2 {
-  margin: 0px;
-  height: 39%;
-  text-align: center;
-}
 .loan-value2:active {
   background-color: rgb(142, 209, 78);
 }
-
 .loan-value2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 39%;
+  text-align: center;
   margin: 0;
 }
 
@@ -241,26 +185,69 @@ body {
   background-color: green;
   outline: orangered solid 1px;
 }
-.loan-value5 {
-  margin-top: 0;
-  margin-bottom: 0;
-  height: 39%;
-}
 .loan-value5:active {
   background-color: rgb(142, 209, 78);
 }
-
 .loan-value5 {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 39%;
   margin: 0;
 }
-
-.loan-close-button {
-  display: block;
-  width: 100%;
-  height: 22%;
+  
+.pop-up {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  width: 400px;
+  max-width: 70%;
+  display: none;
+  z-index: 1000;
+  overflow: hidden;
+  background-color: #7059c2;
+}
+.pop-up-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  background-color: transparent;
+}
+.pop-up-inside-header {
+  font-size: 1.25rem;
+  font-weight: bold;
+  pointer-events: none;
+}
+.close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+}
+.pop-up-body {
+  padding: 10px 15px;
+  background-color: transparent;
+  pointer-events: none;
+}
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 999;
 }
 
 @media (max-width: 900px) {
@@ -275,8 +262,11 @@ body {
   .button-cluster2 {
     margin-top: 5vh;
   }
-  .button-cluster, .button-cluster2 {
-    gap: 22px;
+  .button-cluster1, .button-cluster2 {
+    gap: 40px;
+  }
+  .image-control {
+    height: 170px;
   }
   .bank-control, .score-control, .loan-control {
     font-size: 20px;
@@ -284,7 +274,7 @@ body {
   .loan-value-div {
     width: 100px;
     height: 84px;
-    bottom: 155px;
+    bottom: 156px;
   }
 }
 
@@ -298,10 +288,10 @@ body {
     border-radius: 18px;
   }
   .button-cluster2 {
-    margin-top: 1vh;
+    margin: 0;
   }
-  .button-cluster, .button-cluster2 {
-    gap: 18px;
+  .button-cluster1, .button-cluster2 {
+    gap: 30px;
   }
   .image-control {
     height: 120px;
@@ -312,7 +302,7 @@ body {
   .loan-value-div {
     width: 80px;
     height: 88px;
-    bottom: 205px;
+    bottom: 216px;
   }
 }
 
@@ -325,8 +315,8 @@ body {
     padding: 12px 14px;
     border-radius: 16px;
   }
-  .button-cluster, .button-cluster2 {
-    gap: 16px;
+  .button-cluster1, .button-cluster2 {
+    gap: 5px;
   }
   .image-control {
     height: 100px;
@@ -339,7 +329,10 @@ body {
   }
   .loan-value-div {
     width: 60px;
-    height: 90px;
-    bottom: 210px;
+    height: 80px;
+    bottom: 220px;
+  }
+  .loan-control {
+    font-size: 10px;
   }
 }

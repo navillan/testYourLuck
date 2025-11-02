@@ -66,9 +66,12 @@ function playGame(playerMove) {
     updateHeaderSelector();
     updateBankValue();  
   
-  document.getElementById('overlay').style.opacity = 1;
+  
   document.getElementById('overlay').style.pointerEvents = 'all';
-  document.querySelector('.js-pop-up').style.display = 'block';
+  setTimeout(()=>{   
+   document.querySelector('.js-pop-up').style.display = 'block';
+   document.getElementById('overlay').style.opacity = 1;
+  }, 1000)  
 };
 
 function handleResetButton() {
