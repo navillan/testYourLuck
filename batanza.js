@@ -12,6 +12,7 @@ updateScoreElement();
 updateHeaderSelector();
 updateBankValue();
 staticScoreUpdate();
+initLoanInfo();
 
 
 function playGame(playerMove) {
@@ -64,14 +65,15 @@ function playGame(playerMove) {
   localStorage.setItem('headerScore', JSON.stringify(headerScore));
 
     updateHeaderSelector();
-    updateBankValue();  
+
+  
+
+    updateBankValue();
   
   
+  document.getElementById('overlay').style.opacity = 1;
   document.getElementById('overlay').style.pointerEvents = 'all';
-  setTimeout(()=>{   
-   document.querySelector('.js-pop-up').style.display = 'block';
-   document.getElementById('overlay').style.opacity = 1;
-  }, 1000)  
+  document.querySelector('.js-pop-up').style.display = 'block';
 };
 
 function handleResetButton() {
@@ -87,7 +89,11 @@ function handleResetButton() {
   updateHeaderSelector();
   localStorage.removeItem('bankValue');
   updateBankValue();
-}
+  payForLoanFiveReset();
+  payForLoanTwoReset();
+  localStorage.setItem("loan5", false);
+  localStorage.setItem("loan2", false);
+};
 
 function updateScoreElement() {
   document.querySelector('.js-score')
@@ -161,33 +167,89 @@ loanCloseButton.addEventListener('click', () => {
   document.getElementById('loan-value-div-id').style.display = 'none';
 })
 
+document.addEventListener('click', (event) => {
+  const loanDiv = document.getElementById('loan-value-div-id');
+  const loanButton = document.getElementById('loan-control-id');
+  
+  if (loanDiv && !loanDiv.contains(event.target) && !loanButton.contains(event.target)) {
+    loanDiv.style.display = 'none';
+  }
+});
+
 const overlayReset = document.querySelector('.close-button-js')
 overlayReset.addEventListener('click', () => {
   document.getElementById('overlay').style.pointerEvents = 'none';
 })
 
+function getLoanInfo() {
+  const loan5 = JSON.parse(localStorage.getItem("loan5")) || "false";
+  const loan2 = JSON.parse(localStorage.getItem("loan2")) || "false";
+  return { loan5, loan2 };
+}
+
+function initLoanInfo() {
+  const { loan2, loan5 } = getLoanInfo();
+
+  if(loan2) {
+    document.querySelector('.loan-value2').style.textAlign = 'left';
+    document.querySelector('.loan-value2').style.paddingLeft = '1vh';
+    document.querySelector('.pay-button2').style.display = 'block';
+    document.querySelector('.loan-value2').classList.add('locked-loan');
+  } else if(!loan2) {
+    document.querySelector('.loan-value2').style.textAlign = 'center';
+    document.querySelector('.loan-value2').style.padding = '0';
+    document.querySelector('.pay-button2').style.display = 'none';
+    document.querySelector('.loan-value2').classList.remove('locked-loan');
+  }
+  if(loan5) {
+    document.querySelector('.loan-value5').style.textAlign = 'left';
+    document.querySelector('.loan-value5').style.paddingLeft = '1vh';
+    document.querySelector('.pay-button5').style.display = 'block';
+    document.querySelector('.loan-value5').classList.add('locked-loan');
+  } else if(!loan5) {
+    document.querySelector('.loan-value2').style.textAlign = 'center';
+    document.querySelector('.loan-value2').style.padding = '0';
+    document.querySelector('.pay-button5').style.display = 'none';
+    document.querySelector('.loan-value5').classList.remove('locked-loan');
+  }
+}
 
 function loanAdd2() {
-  let amount = bankValue + 200;
+  
+  const loan2 = JSON.parse(localStorage.getItem("loan2") || "false");
+  if(!loan2){
+    let amount = bankValue + 200;
 
-   document.getElementById('bank-control').innerHTML = `BANK: ${bankValue + 200}`
-    console.log('2');
+    document.getElementById('bank-control').innerHTML = `BANK: ${bankValue + 200}`
+    document.querySelector('.loan-value2').style.textAlign = 'left';
+    document.querySelector('.loan-value2').style.paddingLeft = '1vh';
+    document.querySelector('.pay-button2').style.display = 'block';
+    document.querySelector('.loan-value2').classList.add('locked-loan');
 
-  playLoanTwo();
-  updateStorageBank(amount);
-  updateBankValue();
+    localStorage.setItem("loan2", true)
+    playLoanTwo();
+    updateStorageBank(amount);
+    updateBankValue();
+  }
 };
 
 
 function loanAdd5() {
-  let amount = bankValue + 500;
+  const loan5 = JSON.parse(localStorage.getItem("loan5") || "false");
+  if(!loan5){
+    let amount = bankValue + 500;
 
-   document.getElementById('bank-control').innerHTML = `BANK: ${bankValue + 500}`
-    console.log('5')
+    document.getElementById('bank-control').innerHTML = `BANK: ${bankValue + 500}`
+    document.querySelector('.loan-value5').style.textAlign = 'left';
+    document.querySelector('.loan-value5').style.paddingLeft = '1vh';
+    document.querySelector('.pay-button5').style.display = 'block';
+    document.querySelector('.loan-value5').classList.add('locked-loan');
 
-  playLoanFive();
-  updateStorageBank(amount);
-  updateBankValue();
+    localStorage.setItem("loan5", true)
+    playLoanFive();
+    updateStorageBank(amount);
+    updateBankValue();
+  }
 };
 
 function updateStorageBank(amount) {
@@ -204,3 +266,52 @@ function playLoanFive() {
   const audio = document.querySelector('.coin-sound5');
   audio.play()
 };
+
+const payForFive = document.querySelector('.pay-button5')
+
+function payForLoanFive() {
+
+  if (bankValue - 500 > 0) {
+    bankValue = bankValue - 500;
+    document.querySelector('.loan-value5').classList.remove('locked-loan');
+    document.querySelector('.loan-value5').style.textAlign = 'center';
+    document.querySelector('.loan-value5').style.paddingLeft = '0';
+    document.querySelector('.pay-button5').style.display = 'none';
+    localStorage.setItem("loan5", false);
+  } else {
+    document.querySelector('.loan-pop-up').style.display = 'block';
+  }
+  updateBankValue();
+}
+
+function payForLoanFiveReset() {
+  document.querySelector('.loan-value5').classList.remove('locked-loan');
+  document.querySelector('.loan-value5').style.textAlign = 'center';
+  document.querySelector('.loan-value5').style.paddingLeft = '0';
+  document.querySelector('.pay-button5').style.display = 'none';
+}
+
+
+const payForTwo = document.querySelector('.pay-button2')
+
+function payForLoanTwo() {
+  
+  if (bankValue - 200 > 0) {
+    bankValue = bankValue - 200;
+    document.querySelector('.loan-value2').classList.remove('locked-loan');
+    document.querySelector('.loan-value2').style.textAlign = 'center';
+    document.querySelector('.loan-value2').style.paddingLeft = '0';
+    document.querySelector('.pay-button2').style.display = 'none';
+    localStorage.setItem("loan2", false);
+  } else {
+    document.querySelector('.loan-pop-up').style.display = 'block';
+  }
+  updateBankValue();
+}
+
+function payForLoanTwoReset() {
+  document.querySelector('.loan-value2').classList.remove('locked-loan');
+  document.querySelector('.loan-value2').style.textAlign = 'center';
+  document.querySelector('.loan-value2').style.paddingLeft = '0';
+  document.querySelector('.pay-button2').style.display = 'none';
+}

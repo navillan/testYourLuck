@@ -148,15 +148,15 @@ body {
 }
 
 .loan-value-div {
-  position: fixed;
+  position: absolute;
   background-color: rgb(142, 209, 78);
   font-weight: bold;
-  width: 130px;
+  width: 120px;
   height: 90px;
   border-radius: 2px;
   display: none;
   cursor: pointer;
-  bottom: 126px;
+  bottom: calc(100% + -54px);
 }
 .loan-close-button {
   display: block;
@@ -194,6 +194,37 @@ body {
   justify-content: center;
   height: 39%;
   margin: 0;
+}
+
+.pay-button {
+  position: absolute;
+  left: 2px;
+  font-size: 16px;
+  padding: 0.1rem;
+  margin: 0;
+  color: white;
+  background-color: #7059c2;
+  border: none;
+  border-radius: 0.2rem;
+  display: none;
+}
+
+.pay-button:hover {
+  background-color: rgb(50, 102, 214);
+}
+.pay-button:active {
+  background-color: rgb(14, 66, 44);
+}
+.pay-button5 {
+  bottom: 40px;
+}
+.pay-button2 {
+  bottom: 5px;
+}
+
+.locked-loan {
+  pointer-events: none;
+  background-color: red;
 }
   
 .pop-up {
@@ -274,7 +305,6 @@ body {
   .loan-value-div {
     width: 100px;
     height: 84px;
-    bottom: 156px;
   }
 }
 
@@ -300,9 +330,8 @@ body {
     font-size: 16px;
   }
   .loan-value-div {
-    width: 80px;
-    height: 88px;
-    bottom: 216px;
+    width: 92px;
+    bottom: calc(100% + -55px);
   }
 }
 
@@ -328,9 +357,13 @@ body {
     font-size: 12px;
   }
   .loan-value-div {
-    width: 60px;
+    width: 70px;
     height: 80px;
-    bottom: 220px;
+    bottom: calc(100% + -72px);
+  }
+  .pay-button {
+    font-size: 12px;
+    left: 1px;
   }
   .loan-control {
     font-size: 10px;
