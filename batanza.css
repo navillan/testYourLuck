@@ -156,7 +156,7 @@ body {
   border-radius: 2px;
   display: none;
   cursor: pointer;
-  bottom: calc(100% + -54px);
+  bottom: 68%;
 }
 .loan-close-button {
   display: block;
@@ -305,12 +305,16 @@ body {
   .loan-value-div {
     width: 100px;
     height: 84px;
+    bottom: 67%;
   }
 }
 
 @media (max-width: 600px) {
   body {
     font-size: 20px;
+  }
+  .main-Flex-container {
+    height: 86vh;
   }
   .reset-score-button {
     font-size: 18px;
@@ -331,13 +335,15 @@ body {
   }
   .loan-value-div {
     width: 92px;
-    bottom: calc(100% + -55px);
   }
 }
 
 @media (max-width: 451px) {
   body {
     font-size: 16px;
+  }
+  .main-Flex-container {
+    margin-top: 70px;
   }
   .reset-score-button {
     font-size: 14px;
@@ -359,7 +365,7 @@ body {
   .loan-value-div {
     width: 70px;
     height: 80px;
-    bottom: calc(100% + -72px);
+    bottom: 58%;
   }
   .pay-button {
     font-size: 12px;
